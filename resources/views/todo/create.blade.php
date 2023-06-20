@@ -35,6 +35,7 @@
         @enderror
 
 
+        @if($tags->count() > 0)
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Выберите теги</label>
             <select class="form-select" multiple aria-label="multiple select example" name="tags[]">
@@ -44,10 +45,15 @@
             </select>
         </div>
 
+        @else
+            Для начала <a href="{{ route('tags.index') }}">создайте теги</a>
+        @endif
+
         @error('tags')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 
+        <hr>
 
         <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
